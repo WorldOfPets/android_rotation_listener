@@ -17,11 +17,11 @@ class MainActivity : AppCompatActivity() {
         val orientationEventListener = object : OrientationEventListener(applicationContext) {
             override fun onOrientationChanged(orientation: Int) {
                 when (orientation) {
-                    50 -> {
+                    in 49..51 -> {
                         addStars()
                         Toast.makeText(this@MainActivity, orientation.toString(), Toast.LENGTH_LONG).show()
                     }
-                    310 -> {
+                    in 309..311 -> {
                         removeStars()
                         Toast.makeText(this@MainActivity, orientation.toString(), Toast.LENGTH_LONG).show()
                     }
