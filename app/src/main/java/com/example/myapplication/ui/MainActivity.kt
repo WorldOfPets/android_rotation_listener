@@ -1,19 +1,28 @@
 package com.example.myapplication.ui
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.pm.ApplicationInfo
+import android.os.Build
 import android.os.Bundle
 import android.view.OrientationEventListener
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.R
+import java.util.Locale.Category
+
 
 class MainActivity : AppCompatActivity() {
     var stars: Int = 0
     lateinit var tV: TextView
+    lateinit var progressB: ProgressBar
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         tV = findViewById(R.id.testTextView)
+        progressB = findViewById(R.id.progressBarTest)
+
+
         val orientationEventListener = object : OrientationEventListener(applicationContext) {
             override fun onOrientationChanged(orientation: Int) {
                 when (orientation) {
