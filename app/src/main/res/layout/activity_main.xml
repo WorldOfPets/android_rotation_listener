@@ -7,14 +7,14 @@
     android:gravity="center"
     android:layout_height="match_parent"
     tools:context=".ui.MainActivity">
-
+<!--style="@android:style/Widget.ProgressBar.Large"-->
     <ProgressBar
         android:id="@+id/progressBarTest"
-        style="@android:style/Widget.ProgressBar.Large"
-        android:indeterminateDrawable="@drawable/progress_grad"
+        style="@style/CustomProgressBarTheme"
+
         android:layout_gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_width="100sp"
+        android:layout_height="100sp"/>
     <TextView
         android:textAlignment="center"
         android:id="@+id/testTextView"

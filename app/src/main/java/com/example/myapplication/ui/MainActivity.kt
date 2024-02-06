@@ -7,8 +7,10 @@ import android.view.OrientationEventListener
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.R
+import java.lang.Exception
 import java.util.Locale.Category
 
 
@@ -21,6 +23,21 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         tV = findViewById(R.id.testTextView)
         progressB = findViewById(R.id.progressBarTest)
+        try {
+            throw Exception("Im test exception!")
+        }catch (e:Exception){
+            Helper.alert(this, e.message.toString())
+
+//            AlertDialog.Builder(this)
+//                .setTitle("Hello world")
+//                .setMessage(e.message.toString())
+//                .setPositiveButton("Yes") { _, _ ->
+//                    Toast.makeText(this, "Yess!", Toast.LENGTH_LONG).show()
+//                }
+//                .setNegativeButton("No"){_, _ ->
+//                    Toast.makeText(this, "Nooo!", Toast.LENGTH_LONG).show()
+//                }.show()
+        }
 
 
         val orientationEventListener = object : OrientationEventListener(applicationContext) {
