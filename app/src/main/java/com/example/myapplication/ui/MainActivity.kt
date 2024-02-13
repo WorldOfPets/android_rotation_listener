@@ -1,17 +1,18 @@
 package com.example.myapplication.ui
 
-import android.content.pm.ApplicationInfo
-import android.os.Build
 import android.os.Bundle
 import android.view.OrientationEventListener
+import android.view.View
+import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.example.myapplication.R
-import java.lang.Exception
-import java.util.Locale.Category
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 class MainActivity : AppCompatActivity() {
@@ -23,6 +24,18 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         tV = findViewById(R.id.testTextView)
         progressB = findViewById(R.id.progressBarTest)
+        val btn = findViewById<ImageView>(R.id.imgBtn)
+        btn.setOnClickListener {
+            lifecycleScope.launch {
+                progressB.visibility = View.VISIBLE
+                withContext(Dispatchers.IO) {
+                    Thread.sleep(2500)
+                }
+                progressB.visibility = View.GONE
+            }
+        }
+
+
         try {
             throw Exception("Im test exception!")
         }catch (e:Exception){
