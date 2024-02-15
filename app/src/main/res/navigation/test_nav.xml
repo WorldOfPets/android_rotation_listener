@@ -22,5 +22,13 @@
         <argument
             android:name="test_number"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_secondFragment_to_mapFragment"
+            app:destination="@id/mapFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="com.example.myapplication.ui.MapFragment"
+        android:label="fragment_map"
+        tools:layout="@layout/fragment_map" />
 </navigation>

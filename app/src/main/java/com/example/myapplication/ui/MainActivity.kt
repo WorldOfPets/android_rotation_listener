@@ -1,6 +1,7 @@
 package com.example.myapplication.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.OrientationEventListener
 import android.view.View
 import android.widget.ImageView
@@ -10,6 +11,10 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.myapplication.R
+import io.github.jan.supabase.createSupabaseClient
+import io.github.jan.supabase.gotrue.Auth
+import io.github.jan.supabase.postgrest.Postgrest
+import io.github.jan.supabase.postgrest.from
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -34,6 +39,12 @@ class MainActivity : AppCompatActivity() {
                 progressB.visibility = View.GONE
             }
         }
+
+        lifecycleScope.launch {
+            var data = MyDB.connection.from("trans").select().decodeList<Transactions>()
+            Log.e(this::class.java.simpleName, data.toString())
+        }
+
 
 
         try {
